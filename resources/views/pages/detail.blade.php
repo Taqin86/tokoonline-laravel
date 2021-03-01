@@ -213,5 +213,5 @@
           },
         },
       });
-    </script
+    </script>
 @endpush
