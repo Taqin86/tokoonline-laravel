@@ -25,7 +25,7 @@
     @yield('content')
 
     {{-- Footer --}}
-    @include('inludes.footer')
+    @include('includes.footer')
 
     {{-- Script --}}
     @stack('prepend-script')
