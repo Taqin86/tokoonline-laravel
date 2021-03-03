@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,13 @@ Route::get('/dashboard/transactions/{id}', 'DashboardTransactionController@detai
 
 Route::get('/dashboard/settings', 'DashboardSettingController@store')->name('dashboard-store');
 Route::get('/dashboard/account', 'DashboardSettingController@account')->name('dashboard-account');
+
+    // ->middleware(['auth', 'admin'])
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->group(function() {
+        Route::get('/', 'DashboardController@index')->name('admin-dashboard');
+    });
 
 Auth::routes();
 
