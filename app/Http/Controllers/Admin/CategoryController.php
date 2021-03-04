@@ -29,7 +29,7 @@ class CategoryController extends Controller
                 ->addColumn('action', function($item) {
                     return '
                         <div class="btn-group">
-                            <div class="dropdown>
+                            <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle mr-1 mb-1" type="button" data-toggle="dropdown">
                                 Aksi
                                 </button>
@@ -105,7 +105,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Category::findOrFail($id);
+
+        return view('pages.admin.category.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -117,7 +121,16 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name);
+        $data['photo'] = $request->file('photo')->store('assets/category', 'public');
+
+        $item = Category::findOrFail($id);
+
+        $item->update($data);
+
+        return redirect()->route('category.index');
     }
 
     /**
