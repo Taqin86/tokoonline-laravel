@@ -107,7 +107,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CaregoryRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         //
     }
