@@ -10,7 +10,7 @@ class ProductGallery extends Model
         'photos', 'products_id'
     ];
 
-    protected $hiden = [
+    protected $hidden = [
 
     ];
 
