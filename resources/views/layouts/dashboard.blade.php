@@ -31,37 +31,37 @@
           </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : ''}}"
             >
               Dashboard
             </a>
             <a
-              href="/dashboard-products.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-product') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/products')) ? 'active' : ''}}"
             >
               My Product
             </a>
             <a
-              href="/dashboard-transactions.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-transaction') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction')) ? 'active' : ''}}"
             >
               Transaction
             </a>
             <a
-              href="/dashboard-settings.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-store') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store')) ? 'active' : ''}}"
             >
               Store Settings
             </a>
             <a
-              href="/dashboard-account.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-account') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/account')) ? 'active' : ''}}"
             >
               My Account
             </a>
             <a
-              href="/index.html"
+              href="{{ route('home') }}"
               class="list-group-item list-group-item-action"
             >
               Sign Out
@@ -111,10 +111,10 @@
                       Hi, Rizqi
                     </a>
                     <div class="dropdown-menu">
-                      <a href="/dashboard.html" class="dropdown-item"
+                      <a href="{{ route('dashboard') }}" class="dropdown-item"
                         >Dashboard</a
                       >
-                      <a href="/dashboard-account.html" class="dropdown-item"
+                      <a href="{{ route('dashboard-store') }}" class="dropdown-item"
                         >Settings</a
                       >
                       <div class="dropdown-divider"></div>
