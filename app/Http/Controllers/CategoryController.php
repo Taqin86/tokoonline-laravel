@@ -13,30 +13,26 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
-        $products = Product::with(['galleries'])->pagination(32);
+        $products = Product::paginate($request->input('limit', 12));
 
-        return view('pages.home',[
+        return view('pages.category',[
             'categories' => $categories,
             'products' => $products
         ]);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function detail(Request $request, $slug)
     {
         $categories = Category::all();
         $category = Category::where('slug', $slug)->firstOrFail();
-        $products = Product::with(['galleries'])->where('categories_id', $category->id)->pagination(32);
+        $products = Product::where('categories_id', $category->id)->paginate($request->input('limit', 12));
 
-        return view('pages.home',[
+        return view('pages.category',[
             'categories' => $categories,
+            'category' => $category,
             'products' => $products
         ]);
     }
