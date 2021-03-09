@@ -92,7 +92,7 @@
           </div>
           <div class="row">
             <div class="col-12 mt-4">
-              {{ $product->links() }}
+              {{ $products->links() }}
             </div>
           </div>
         </div>
