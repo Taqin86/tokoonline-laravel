@@ -175,6 +175,7 @@
         mounted() {
           AOS.init();
         
+<<<<<<< HEAD
         },
         methods: {
             checkForEmailAvailability: function() {
@@ -211,6 +212,45 @@
                     });
             }
         },
+=======
+        },
+        methods: {
+            checkForEmailAvailability: function() {
+                var self = this;
+                axios.get('{{ route('api-register-check') }}', {
+                    params: {
+                        email: this.email
+                    }
+                })
+                    .then(function (response) {
+
+                        if(response.data == 'Available') {
+                            self.$toasted.show(
+                                "Email anda tersedia! Silahkan lanjut langkah selanjutnya!",
+                                {
+                                position: "top-center",
+                                className: "rounded",
+                                duration: 1000
+                                }
+                            );
+                            self.email_unavailable = false;
+                        } else {
+                            self.$toasted.error(
+                                "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
+                                {
+                                position: "top-center",
+                                className: "rounded",
+                                duration: 1000
+                                }
+                            );
+                            self.email_unavailable = true;
+                        }
+                        // handle success
+                        console.log(response);
+                    });
+            }
+        },
+>>>>>>> 706837785c1905271e09d980b6a8aa0b8f36161d
         data() {
             return {
                 name: "Angga Rizqi Sett",
