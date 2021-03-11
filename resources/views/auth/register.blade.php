@@ -167,6 +167,7 @@
     <script src="/vendor/vue/vue.js"></script>
     <!-- START: Vue toasted / notif -->
     <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       Vue.use(Toasted);
 
@@ -174,21 +175,52 @@
         el: '#register',
         mounted() {
           AOS.init();
-        //   this.$toasted.error(
-        //     "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
-        //     {
-        //       position: "top-center",
-        //       className: "rounded",
-        //       duration: 1000
-        //     }
-        //   );
+        
         },
-        data: {
-          name: "Angga Rizqi Sett",
-          email: "kamujagoan@gmail.id",
-          password: "",
-          is_store_open: true,
-          store_name: "",
+        methods: {
+            checkForEmailAvailability: function() {
+                var self = this;
+                axios.get('{{ route('api-register-check') }}', {
+                    params: {
+                        email: this.email
+                    }
+                })
+                    .then(function (response) {
+
+                        if(response.data == 'Available') {
+                            self.$toasted.show(
+                                "Email anda tersedia! Silahkan lanjut langkah selanjutnya!",
+                                {
+                                position: "top-center",
+                                className: "rounded",
+                                duration: 1000
+                                }
+                            );
+                            self.email_unavailable = false;
+                        } else {
+                            self.$toasted.error(
+                                "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
+                                {
+                                position: "top-center",
+                                className: "rounded",
+                                duration: 1000
+                                }
+                            );
+                            self.email_unavailable = true;
+                        }
+                        // handle success
+                        console.log(response);
+                    });
+            }
+        },
+        data() {
+            return {
+                name: "Angga Rizqi Sett",
+                email: "kamujagoan@gmail.id",
+                is_store_open: true,
+                store_name: "",
+                email_unavailable: false
+        }
         }
       })
     </script>
