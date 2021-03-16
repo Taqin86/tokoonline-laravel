@@ -94,7 +94,7 @@
             </div>
             <!-- END: Shipping Details -->
           </div>
-          <form action="" id="location">
+          <form action="" id="locations">
             <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
               <!-- SRART: Form Table Shipping Details -->
               <div class="col-md-6">
@@ -193,8 +193,8 @@
     <script src="https://unpkg.com/vue-toasted"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-      var location = new Vue({
-        el: "#location",
+      var locations = new Vue({
+        el: "#locations",
         mounted() {
           AOS.init();
           this.getProvincesData();
@@ -225,9 +225,9 @@
         },
         watch: {
           // melihat data kalau ada perubahan kalau ada perubahan ProvincesData maka akan memanggil RegenciesData
-          provinces_id: function(val, olVal) {
+          provinces_id: function(val, oldVal) {
             this.regencies_id = null;
-            this.getRegenciesData()
+            this.getRegenciesData();
           }
         }
       });
