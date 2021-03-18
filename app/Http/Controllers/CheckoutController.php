@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Cart;
+use App\Product;
 use App\Transaction;
 use App\TransactionDetail;
 
@@ -50,6 +51,9 @@ class CheckoutController extends Controller
                 'code' => $trx,
             ]);
         }
+
+        // Delete cart data
+        Cart::where('users_id', Auth::user()->id)->delete();
 
         // Konfigurasi Midtrans
         Config::$serverKey = config('services.midtrans.serverKey');
