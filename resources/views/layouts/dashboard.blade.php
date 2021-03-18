@@ -49,23 +49,28 @@
               Transaction
             </a>
             <a
-              href="{{ route('dashboard-store') }}"
+              href="{{ route('dashboard-settings-store') }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/store')) ? 'active' : ''}}"
             >
               Store Settings
             </a>
             <a
-              href="{{ route('dashboard-account') }}"
+              href="{{ route('dashboard-settings-account') }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/account')) ? 'active' : ''}}"
             >
               My Account
             </a>
             <a
-              href="{{ route('home') }}"
-              class="list-group-item list-group-item-action"
+               href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"
+               class="list-group-item list-group-item-action"
             >
               Sign Out
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </div>
         </div>
         <!-- END: Sidebar -->
@@ -108,23 +113,36 @@
                         alt=""
                         class="rounded-circle mr-2 profile-picture"
                       />
-                      Hi, Rizqi
+                      Hi, {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu">
                       <a href="{{ route('dashboard') }}" class="dropdown-item"
                         >Dashboard</a
                       >
-                      <a href="{{ route('dashboard-store') }}" class="dropdown-item"
-                        >Settings</a
+                      <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item"
+                        >Settings
+                        </a
                       >
-                      <div class="dropdown-divider"></div>
-                      <a href="/" class="dropdown-item">Log Out</a>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link d-inline-block mt-2">
-                      <img src="/images/icon-cart-filled.svg" alt="" />
-                      <div class="cart-badge">3</div>
+                    <a href="{{ route('cart') }}" class="nav-link d-inline-block mt-2">
+                        @php
+                            $carts = \App\Cart::where('users_id', Auth::user()->id)->count();
+                        @endphp
+                        @if($carts > 0)
+                            <img src="/images/icon-cart-filled.svg" alt="" />
+                            <div class="card-badge">{{ $carts }}</div>
+                        @else
+                            <img src="/images/icon-cart-empty.svg" alt="" />
+                        @endif
                     </a>
                   </li>
                 </ul>
@@ -132,10 +150,10 @@
                 <!-- START: Mobile Menu -->
                 <ul class="navbar-nav d-block d-lg-none">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">Hi, Rizqi</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link">Hi, {{ Auth::user()->name }}</a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link d-inline-block">Cart</a>
+                    <a href="{{ route('cart') }}" class="nav-link d-inline-block">Cart</a>
                   </li>
                 </ul>
                 <!-- END: Mobile Menu -->
