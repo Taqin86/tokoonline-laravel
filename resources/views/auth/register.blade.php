@@ -137,7 +137,7 @@
                         </div>
                         <div class="form-group" v-if="is_store_open">
                             <label>Kategori</label>
-                            <select name="categories_id"s class="form-control">
+                            <select name="category" class="form-control">
                                 <option value="" disabled>Select Category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -207,7 +207,7 @@
                             self.email_unavailable = true;
                         }
                         // handle success
-                        console.log(response);
+                        console.log(response.data);
                     });
             }
         },
