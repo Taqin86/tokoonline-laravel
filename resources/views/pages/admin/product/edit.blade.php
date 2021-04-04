@@ -27,11 +27,11 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ route('product.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                                @method('PUT')
-                                @csrf
+                    <form action="{{ route('product.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -44,6 +44,7 @@
                                             <label>Pemilik Product</label>
                                             <select name="users_id" class="form-control">
                                                 <option value="{{ $item->users_id }}" selected>{{ $item->user->name }}</option>
+                                                <option value="" disabled>----------------</option>
                                                 @foreach ($users as $user)
                                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                 @endforeach
@@ -81,9 +82,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

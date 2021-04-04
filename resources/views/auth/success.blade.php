@@ -12,7 +12,7 @@
           <div class="row align-items-center row-login justify-content-center">
             <div class="col-lg-6 text-center">
               <img src="/images/success.svg" alt="" class="mb-4" />
-              <h2>Welocome To Store</h2>
+              <h2>Welocome to Store</h2>
               <p>
                 Kamu sudah berhasil terdaftar <br />
                 bersama kami. Let’s grow up now.

@@ -31,7 +31,7 @@
       <!-- END: Breadcrumbs -->
 
       <!-- START: Store-Cart -->
-      <sction class="store-cart">
+      <section class="store-cart">
         <div class="container">
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             <!-- START: Table Cart -->
@@ -187,7 +187,7 @@
             </div>
           </form>
         </div>
-      </sction>
+      </section>
       <!-- END: Store-Cart -->
     </div>
     <!-- END: Page Content -->

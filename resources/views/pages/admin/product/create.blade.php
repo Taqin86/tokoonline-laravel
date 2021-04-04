@@ -17,7 +17,7 @@
         </div>
         <div class="dashboard-content">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-12">
                     @if($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -27,10 +27,10 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -78,9 +78,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

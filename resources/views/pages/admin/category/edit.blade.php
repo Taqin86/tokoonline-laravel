@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="dashboard-heading">
         <h2 class="dashboard-title">Category</h2>
-        <p class="dashboard-subtitle">Edit Category</p>
+        <p class="dashboard-subtitle">Edit "{{ $item->name }}" Category</p>
         </div>
         <div class="dashboard-content">
             <div class="row">
@@ -27,11 +27,11 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ route('category.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                                @method('PUT')
-                                @csrf
+                    <form action="{{ route('category.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -53,9 +53,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
