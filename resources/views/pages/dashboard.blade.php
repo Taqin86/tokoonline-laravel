@@ -65,7 +65,7 @@
                                 {{ $transaction->created_at ?? '' }}
                             </div>
                             <div class="col-md-1 d-none d-md-block">
-                                <img src="/images/dashboard-arrow-right.svg" alt="arrow">
+                                <img src="/images/dashboard-arrow-right.svg" alt="arrow" />
                             </div>
                         </div>
                     </div>
