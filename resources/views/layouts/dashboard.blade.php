@@ -38,32 +38,32 @@
             </a>
             <a
               href="{{ route('dashboard-product') }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/products')) ? 'active' : ''}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/products*')) ? 'active' : ''}}"
             >
-              My Product
+              My Products
             </a>
             <a
               href="{{ route('dashboard-transaction') }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction')) ? 'active' : ''}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : ''}}"
             >
-              Transaction
+              Transactions
             </a>
             <a
               href="{{ route('dashboard-settings-store') }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store')) ? 'active' : ''}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings*')) ? 'active' : ''}}"
             >
               Store Settings
             </a>
             <a
               href="{{ route('dashboard-settings-account') }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/account')) ? 'active' : ''}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ? 'active' : ''}}"
             >
               My Account
             </a>
             <a
                href="{{ route('logout') }}"
                onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
+              document.getElementById('logout-form').submit();"
                class="list-group-item list-group-item-action"
             >
               Sign Out
