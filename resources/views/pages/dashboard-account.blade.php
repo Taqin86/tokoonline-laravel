@@ -18,129 +18,126 @@
       <div class="dashboard-content">
         <div class="row">
           <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <!-- SRART: My Account -->
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="name">Your Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        name="name"
-                        value="Moh. Rizqi Muttaqin"
-                      />
+            <form action="{{ route('dashboard-settings-redirect', 'dashboard-settings-account') }}" method="POST" enctype="multipart/form-data" id="locations">
+              @csrf
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <!-- SRART: My Account -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          name="name"
+                          value="{{ $user->name }}"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="email">Your Email</label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        name="email"
-                        value="qun@gmail.com"
-                      />
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          name="email"
+                          value="{{ $user->email }}"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="addressOne">Address 1</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="addressOne"
-                        name="addressOne"
-                        value="Jl. Beku Satu"
-                      />
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="address_one">Address 1</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="address_one"
+                          name="address_one"
+                          value="{{ $user->address_one }}"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="addressTwo">Address 2</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="addressTwo"
-                        name="addressTwo"
-                        value="Di Block No. 240"
-                      />
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="address_two">Address 2</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="address_two"
+                          name="address_two"
+                          value="{{ $user->address_two }}"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="province">Province</label>
-                      <select
-                        name="province"
-                        id="province"
-                        class="form-control"
-                      >
-                        <option value="East Java">Jawa Timur</option>
-                      </select>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="provinces_id">Province</label>
+                          <select name="provinces_id" id="provinces_id" class="form-control" v-if="provinces" v-model="provinces_id">
+                            <option v-for="province in provinces" :value="province.id">@{{ province.name }}</option>
+                          </select>
+                          <select v-else class="form-control"></select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="city">City</label>
-                      <select
-                        name="city"
-                        id="city"
-                        class="form-control"
-                      >
-                        <option value="Kediri">Kediri</option>
-                      </select>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="regencies_id">City</label>
+                        <select name="regencies_id" id="regencies_id" class="form-control" v-if="regencies" v-model="regencies_id">
+                          <option v-for="regency in regencies" :value="regency.id">@{{ regency.name }}</option>
+                        </select>
+                        <select v-else class="form-control"></select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="postalCode">postalCode</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="postalCode"
-                        name="postalCode"
-                        value="46161"
-                      />
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="zip_code">Postal Code</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="zip_code"
+                          name="zip_code"
+                          value="{{ $user->zip_code }}"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="country">Country</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="country"
-                        name="country"
-                        value="Indonesia"
-                      />
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="country">Country</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="country"
+                          name="country"
+                          value="{{ $user->country }}"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="mobile">Mobile</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="mobile"
-                        name="mobile"
-                        value="+62858 9513 6275"
-                      />
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="phone_number">Mobile</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="phone_number"
+                          name="phone_number"
+                          value="{{ $user->phone_number}}"
+                        />
+                      </div>
                     </div>
+                    <!-- END: My Account -->
                   </div>
-                  <!-- END: My Account -->
-                </div>
-                <div class="row">
-                  <div class="col text-right">
-                    <button type="submit" class="btn btn-success px-5">
-                      Save Now
-                    </button>
+                  <div class="row">
+                    <div class="col text-right">
+                      <button type="submit" class="btn btn-success px-5">
+                        Save Now
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -148,3 +145,49 @@
   </div>
   <!-- END: Section Content -->
 @endsection
+
+@push('addon-script')
+    <script src="/vendor/vue/vue.js"></script>
+    <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var locations = new Vue({
+        el: "#locations",
+        mounted() {
+          AOS.init();
+          this.getProvincesData();
+        },
+        data: {
+          provinces: null,
+          regencies: null,
+          provinces_id: null,
+          regencies_id: null,
+        },
+        methods: {
+          // mengambil data province
+          getProvincesData() {
+            var self = this;
+            axios.get('{{ route('api-provinces') }}')
+              .then(function(response){
+                self.provinces = response.data;
+              })
+          },
+          // mengambil data regencies
+          getRegenciesData() {
+            var self = this;
+            axios.get('{{ url('api/regencies') }}/' + self.provinces_id)
+              .then(function(response){
+                self.regencies = response.data;
+              })
+          },
+        },
+        watch: {
+          // melihat data kalau ada perubahan kalau ada perubahan ProvincesData maka akan memanggil RegenciesData
+          provinces_id: function(val, oldVal) {
+            this.regencies_id = null;
+            this.getRegenciesData();
+          }
+        }
+      });
+    </script>
+@endpush
